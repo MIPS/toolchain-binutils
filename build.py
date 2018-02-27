@@ -140,6 +140,9 @@ def configure(arch, host, install_dir, src_dir):
         env['CXXFLAGS'] = '-m32'
         env['LDFLAGS'] = '-m32'
 
+    if arch != 'mips64' and arch != 'mips':
+        env['CFLAGS'] = '-DUSE_SHT_RELR'
+
     env_args = ['env'] + ['='.join([k, v]) for k, v in env.items()]
     check_call(env_args + configure_args)
 

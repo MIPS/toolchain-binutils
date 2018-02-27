@@ -2242,9 +2242,11 @@ bfd_section_from_shdr (bfd *abfd, unsigned int shindex)
         case SHT_RELA:
 	  size = bed->s->sizeof_rela;
 	  break;
+#ifdef USE_SHT_RELR
         case SHT_RELR:
 	  size = bed->s->sizeof_relr;
 	  break;
+#endif
         default:
 	  goto fail;
         }
